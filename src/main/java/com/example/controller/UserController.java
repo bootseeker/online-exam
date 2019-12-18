@@ -67,4 +67,13 @@ public class UserController {
    }
 
 	
+	@GetMapping("/userbyEmailId")
+	public ResponseEntity<List<User>> getUsersByEmailId(@RequestParam String emailId)
+	{
+		List<User> users = new ArrayList<>();
+		users = userRepository.findByEmailId(emailId);
+		
+		return ResponseEntity.ok(users);
+	}
+
 }
