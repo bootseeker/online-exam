@@ -11,4 +11,6 @@ import com.example.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 	List<User> findByEmailId(String emailId);
+	User findByUserId(long userId);
+	
 }

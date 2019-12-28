@@ -12,12 +12,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "users")
@@ -31,10 +29,13 @@ public class User implements Serializable {
 	@Column(name = "user_id")
 	private long userId;
 	@Column(name = "first_name")
+	@NotEmpty(message = "first name must not be empty")
 	private String firstName;
 	@Column(name = "last_name")
+	@NotEmpty(message = "last name must not be empty")
 	private String lastName;
 	@Column(name = "email_id")
+	@Email
 	private String emailId;
 	@Column(name = "phone_no")
 	private String phoneNo;
@@ -48,6 +49,15 @@ public class User implements Serializable {
 	@Column(name = "created_by")
 	@CreatedBy
 	private String createdBy;
+	@Column(name = "IS_ACTIVE", nullable = false)
+	private Boolean isActive;
+	@Column(name = "update_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updatedDate;
+	@Column(name = "updated_by")
+	@CreatedBy
+	private String updatedBy;
+	
 
 	public long getUserId() {
 		return userId;
@@ -119,6 +129,30 @@ public class User implements Serializable {
 
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
+	}
+
+	public boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 }
