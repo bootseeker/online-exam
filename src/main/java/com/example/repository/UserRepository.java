@@ -10,7 +10,9 @@ import com.example.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	List<User> findByEmailId(String emailId);
+	User findByEmailId(String emailId);
+
 	User findByUserId(long userId);
-	
+
+	List<User> findByisActive(boolean isActive);
 }
