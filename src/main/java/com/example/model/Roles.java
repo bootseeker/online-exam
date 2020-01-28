@@ -7,20 +7,18 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
 @Table(name = "roles")
-@Getter
-@Setter
+@Data
 public class Roles 
 {
 	@Id
-	@Column(name = "ROLE_SEQ")
-	@JsonIgnore
-	private long roleSeq;
 	@Column(name = "ROLE_ID")
-	private String roleId;
+	@JsonIgnore
+	private long roleID;
+	@Column(name = "ROLE_NAME")
+	private String roleName;
 
 }
