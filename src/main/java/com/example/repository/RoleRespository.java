@@ -9,5 +9,5 @@ import com.example.model.Roles;
 public interface RoleRespository extends JpaRepository<Roles, Long>
 {
 
-	Roles findByRoleId(String roleId);
+	Roles findByRoleName(String roleId);
 }
