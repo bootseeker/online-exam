@@ -48,7 +48,7 @@ public class UserController {
 		if (existingUser != null) {
 			throw new ResourceExistsException("User already exists with email :" + user.getEmailId());
 		}
-		 Roles userRole = roleRespository.findByRoleId("Examiner");
+		 Roles userRole = roleRespository.findByRoleName("Examiner");
 		
 		user.setCreatedBy("SYSTEM");
 		user.setCreatedDate(new Date());
